@@ -1,0 +1,35 @@
+<head>
+  <title>wsl-memberships</title>
+</head>
+
+<template name="projects">
+	<div class="container">
+		<h4>Projectlist</h4>
+		{{> atForm}}
+		{{> insertProject}}
+		<ul>
+		{{#each projects}}
+			<li>{{> project}}</li>
+		{{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="project">
+	{{title}}
+	{{description}}
+	{{> membershipButton collection='Projects' _id=_id }}
+</template>
+
+<template name="insertProject">
+	{{#autoForm collection="Projects" type="insert" id="addProjectForm"}}
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='description' rows=4}}
+        {{> afQuickField name='doc' type='hidden' value=doc}}
+        {{> afQuickField name='docType' type='hidden' value=docType}}
+        <div class="actions">
+	        <button class="ui button ui left approve button" type="submit">Add</button>
+	    </div>
+    {{/autoForm}}
+</template>
+
