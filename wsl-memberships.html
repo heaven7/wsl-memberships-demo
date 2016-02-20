@@ -4,14 +4,17 @@
 
 <template name="projects">
 	<div class="container">
+	{{#if loggedIn }}
 		<h4>Projectlist</h4>
-		{{> atForm}}
 		{{> insertProject}}
 		<ul>
 		{{#each projects}}
 			<li>{{> project}}</li>
 		{{/each}}
 		</ul>
+	{{else}}
+		{{> atForm}}
+	{{/if}}
 	</div>
 </template>
 
